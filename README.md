@@ -71,11 +71,11 @@ resources :posts, only: [:index, :show]
 ```
 
 This will create routing methods for posts that we can utilize in our views and
-controllers. Running `rails routes` in the terminal will give the following
+controllers. Running `bin/rails routes` in the terminal will give the following
 output:
 
 ```console
-$ rails routes
+$ bin/rails routes
 posts   GET  /posts(.:format)       posts#index
 post    GET  /posts/:id(.:format)   posts#show
 ```
@@ -89,8 +89,8 @@ methods. The breakdown is below:
   types are `_path` and `_url`. So if we want to render a link to
   our posts' index page, the method would be `posts_path` or `posts_url`. The
   difference between `_path` and `_url` is that `_path` gives the relative path
-  and `_url` renders the full URL. If you open up the rails console, by running
-  `rails console`, you can test these route helpers out. Run `app.posts_path` and
+  and `_url` renders the full URL. If you open up the Rails console, by running
+  `bin/rails console`, you can test these route helpers out. Run `app.posts_path` and
   see what the output is. You can also run `app.posts_url` and see how it prints
   out the full path instead of the relative path. **In general, it's best to use
   the `_path` version so that nothing breaks if your server domain changes**
@@ -108,7 +108,7 @@ methods. The breakdown is below:
   `posts_path`. Also, you can ignore the `(.:format)` text for now. If you open
   up the Rails console again, you can call the route helpers. If you have a
   `Post` with an `id` of `3`, you can run `app.post_path(3)` and see what the
-  resulting output is. Running route helpers in the rails console is a great way
+  resulting output is. Running route helpers in the Rails console is a great way
   of testing out routes to see what their exact output will be
 
 - **Column 4** - This column shows the controller and action with a syntax of
@@ -116,7 +116,7 @@ methods. The breakdown is below:
 
 One of the other nice things about utilizing route helper methods is that they
 create predictable names for the methods. Once you get into day-to-day Rails
-development, you will only need to run `rails routes` to find custom paths.
+development, you will only need to run `bin/rails routes` to find custom paths.
 
 Let's imagine that you take over a legacy Rails application that was built with
 traditional routing conventions. If you see CRUD controllers for newsletters,
@@ -198,7 +198,7 @@ the following:
 ![Link To](https://s3.amazonaws.com/flatiron-bucket/readme-lessons/link_to.png)
 
 (If your browser loads a blank page, add Post.create(title: 'A lovely title',
-description: 'A superb description') to `db/seeds.rb`, run rake `db:seed`, and
+description: 'A superb description') to `db/seeds.rb`, run `bin/rails db:seed`, and
 then restart your server.) As you can see, even though we never added HTML code
 for the link –– e.g., `<a href="..."></a>` –– the `link_to` method rendered the
 correct tag for us.)
@@ -216,10 +216,10 @@ get '/users/new', to: 'users#new'
 
 For all routes in our application, Rails generates a route prefix that we can use
 in our link helpers to generate the correct path. You can see the prefixes by
-running `rails routes`:
+running `bin/rails routes`:
 
 ```console
-$ rails routes
+$ bin/rails routes
    Prefix Verb URI Pattern          Controller#Action
     posts GET  /posts(.:format)     posts#index
      post GET  /posts/:id(.:format) posts#show
@@ -239,10 +239,10 @@ We could make the path a bit easier to understand by using the `:as` option:
 get '/users/new', to: 'users#new', as: 'register'
 ```
 
-Now, running `rails routes` shows us the new prefix for this route:
+Now, running `bin/rails routes` shows us the new prefix for this route:
 
 ```console
-$ rails routes
+$ bin/rails routes
   Prefix Verb URI Pattern          Controller#Action
    posts GET  /posts(.:format)     posts#index
     post GET  /posts/:id(.:format) posts#show
